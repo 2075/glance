@@ -61,7 +61,13 @@ class File {
 	/// Reads and returns the file's content as an UTF-8 string.
 	func read() throws -> String {
 		do {
-			return try String(contentsOf: url, encoding: .utf8)
+			let data = try Data(contentsOf: url)
+			guard let content = String(data: data, encoding: .utf8) else {
+				throw FileError.fileReadError(path: path, message: "File is not valid UTF-8")
+			}
+			return content
+		} catch let error as FileError {
+			throw error
 		} catch {
 			throw FileError.fileReadError(path: path, message: error.localizedDescription)
 		}

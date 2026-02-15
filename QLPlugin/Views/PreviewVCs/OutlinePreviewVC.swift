@@ -1,4 +1,5 @@
 import Cocoa
+import UniformTypeIdentifiers
 
 class OutlinePreviewVC: NSViewController, PreviewVC {
 	@objc dynamic var rootNodes: [FileTreeNode]
@@ -90,12 +91,8 @@ class DateTransformer: ValueTransformer {
 /// `ValueTransformer` which returns the correct icon depending on whether the current row
 /// represents a file or directory.
 class IconTransformer: ValueTransformer {
-	let directoryIcon = NSImage(
-		contentsOfFile: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/GenericFolderIcon.icns"
-	)
-	let fileIcon = NSImage(
-		contentsOfFile: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/GenericDocumentIcon.icns"
-	)
+	let directoryIcon = NSWorkspace.shared.icon(for: .folder)
+	let fileIcon = NSWorkspace.shared.icon(for: .data)
 
 	override class func transformedValueClass() -> AnyClass { NSImage.self }
 
