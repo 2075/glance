@@ -1,4 +1,4 @@
-import SwiftExec
+import Foundation
 
 /// View controller for previewing AppleScript files:
 ///

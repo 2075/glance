@@ -1,6 +1,5 @@
 import Foundation
 import os.log
-import SwiftExec
 
 class ZIPPreview: Preview {
 	let filesRegex =

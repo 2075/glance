@@ -30,8 +30,8 @@
 		7E458AF22439474E0091BD0F /* NSMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E458AF12439474E0091BD0F /* NSMenuItem.swift */; };
 		7E458AF52439481F0091BD0F /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E458AF42439481F0091BD0F /* Menu.swift */; };
 		7E45F899244DA45500BFB869 /* FileTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45F898244DA45500BFB869 /* FileTree.swift */; };
-		7E5E494B2455E3EB00C8C148 /* SwiftExec in Frameworks */ = {isa = PBXBuildFile; productRef = 7E5E494A2455E3EB00C8C148 /* SwiftExec */; };
 		7E616BB0244997420043F7AB /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 7E616BAF244997420043F7AB /* SwiftCSV */; };
+		7EAA00022702150100AA0002 /* ShellExec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAA00012702150100AA0001 /* ShellExec.swift */; };
 		7E616BB2244998650043F7AB /* MainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E616BB1244998650043F7AB /* MainVC.xib */; };
 		7E6EF1FD240CC802009E4199 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6EF1FC240CC802009E4199 /* Quartz.framework */; };
 		7E6EF200240CC802009E4199 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6EF1FF240CC802009E4199 /* MainVC.swift */; };
@@ -190,6 +190,7 @@
 		7E458AF12439474E0091BD0F /* NSMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMenuItem.swift; sourceTree = "<group>"; };
 		7E458AF42439481F0091BD0F /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		7E45F898244DA45500BFB869 /* FileTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTree.swift; sourceTree = "<group>"; };
+		7EAA00012702150100AA0001 /* ShellExec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellExec.swift; sourceTree = "<group>"; };
 		7E616BB1244998650043F7AB /* MainVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
 		7E6EF1FA240CC802009E4199 /* QLPlugin.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QLPlugin.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E6EF1FC240CC802009E4199 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
@@ -295,7 +296,6 @@
 			files = (
 				7E616BB0244997420043F7AB /* SwiftCSV in Frameworks */,
 				7E6EF1FD240CC802009E4199 /* Quartz.framework in Frameworks */,
-				7E5E494B2455E3EB00C8C148 /* SwiftExec in Frameworks */,
 				7E42B61E245857D9008D7116 /* htmlconverter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +323,7 @@
 				7EAC01EB240D220B009505D0 /* File.swift */,
 				7E45F898244DA45500BFB869 /* FileTree.swift */,
 				7E1B16912455D93E00E2B84D /* HTMLRenderer.swift */,
+				7EAA00012702150100AA0001 /* ShellExec.swift */,
 				7E9F0D7924168870007F1008 /* WebAsset */,
 			);
 			path = Utils;
@@ -639,7 +640,6 @@
 			name = QLPlugin;
 			packageProductDependencies = (
 				7E616BAF244997420043F7AB /* SwiftCSV */,
-				7E5E494A2455E3EB00C8C148 /* SwiftExec */,
 			);
 			productName = QLPlugin;
 			productReference = 7E6EF1FA240CC802009E4199 /* QLPlugin.appex */;
@@ -714,7 +714,6 @@
 			mainGroup = 7ECC8CE5240CB4CC000D6970;
 			packageReferences = (
 				7E616BAE244997420043F7AB /* XCRemoteSwiftPackageReference "SwiftCSV" */,
-				7E5E49492455E3EB00C8C148 /* XCRemoteSwiftPackageReference "swift-exec" */,
 			);
 			productRefGroup = 7ECC8CEF240CB4CC000D6970 /* Products */;
 			projectDirPath = "";
@@ -875,6 +874,7 @@
 				7E9F0D7E24168870007F1008 /* Script.swift in Sources */,
 				7EB3648A244B665700D7F96F /* ZIPPreview.swift in Sources */,
 				7E9F0D7D24168870007F1008 /* Stylesheet.swift in Sources */,
+				7EAA00022702150100AA0002 /* ShellExec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1219,30 +1219,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7E5E49492455E3EB00C8C148 /* XCRemoteSwiftPackageReference "swift-exec" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/samuelmeuli/swift-exec";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.1.1;
-			};
-		};
 		7E616BAE244997420043F7AB /* XCRemoteSwiftPackageReference "SwiftCSV" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/swiftcsv/SwiftCSV";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.5.6;
+				minimumVersion = 0.10.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7E5E494A2455E3EB00C8C148 /* SwiftExec */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7E5E49492455E3EB00C8C148 /* XCRemoteSwiftPackageReference "swift-exec" */;
-			productName = SwiftExec;
-		};
 		7E616BAF244997420043F7AB /* SwiftCSV */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7E616BAE244997420043F7AB /* XCRemoteSwiftPackageReference "SwiftCSV" */;

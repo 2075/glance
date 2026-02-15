@@ -1,6 +1,5 @@
 import Foundation
 import os.log
-import SwiftExec
 
 /// View controller for previewing tarballs (may be gzipped).
 class TARPreview: Preview {
