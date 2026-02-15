@@ -1,7 +1,17 @@
+# macOS
+.DS_Store
+
 # Xcode
 project.xcworkspace/
 xcuserdata/
 
+# Cursor IDE
+.cursor/
+.cursorindexingignore
+.specstory/
+
 # `go build` output
 HTMLConverter/htmlconverter.a
 HTMLConverter/htmlconverter.h
+HTMLConverter/htmlconverter-*.a
+HTMLConverter/glance
