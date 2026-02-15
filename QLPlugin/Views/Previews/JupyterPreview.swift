@@ -55,7 +55,7 @@ class JupyterPreview: Preview {
 	private func getStylesheets() -> [Stylesheet] {
 		var stylesheets = [Stylesheet]()
 
-		// Main Jupyter stylesheet (overrides and additions for nbtohtml stylesheet)
+		// Main Jupyter stylesheet (overrides and additions for notebook converter stylesheet)
 		if let mainStylesheetURL = mainStylesheetURL {
 			stylesheets.append(Stylesheet(url: mainStylesheetURL))
 		} else {

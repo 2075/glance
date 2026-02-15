@@ -10,7 +10,6 @@ import (
 	htmlFormatter "github.com/alecthomas/chroma/v2/formatters/html"
 	"github.com/alecthomas/chroma/v2/lexers"
 	"github.com/alecthomas/chroma/v2/styles"
-	"github.com/samuelmeuli/nbtohtml"
 	"github.com/yuin/goldmark"
 	highlighting "github.com/yuin/goldmark-highlighting/v2"
 	"github.com/yuin/goldmark/extension"
@@ -107,17 +106,15 @@ func convertMarkdownToHTML(source *C.char) *C.char {
 }
 
 //export convertNotebookToHTML
-// convertNotebookToHTML converts the provided Jupyter Notebook JSON to HTML using `nbtohtml`.
+// convertNotebookToHTML converts the provided Jupyter Notebook JSON to HTML.
 func convertNotebookToHTML(source *C.char) *C.char {
 	sourceString := convertToGoString(source)
 
-	html := new(bytes.Buffer)
-	err := nbtohtml.ConvertString(html, sourceString)
+	htmlString, err := convertNotebookString(sourceString)
 	if err != nil {
-		errMessage := fmt.Sprintf("error: Could not convert Notebook to HTML: %d", err)
+		errMessage := fmt.Sprintf("error: Could not convert Notebook to HTML: %s", err)
 		return convertToCString(errMessage)
 	}
-	htmlString := html.String()
 	return convertToCString(htmlString)
 }
 
