@@ -1,5 +1,5 @@
 // Jupyter Notebook to HTML converter.
-// Replaces the archived github.com/samuelmeuli/nbtohtml dependency.
+// Replaces the archived nbtohtml dependency.
 package main
 
 import (

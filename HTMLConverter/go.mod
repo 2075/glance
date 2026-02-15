@@ -1,4 +1,4 @@
-module github.com/samuelmeuli/glance
+module github.com/2075/glance
 
 go 1.22
 
