@@ -59,4 +59,26 @@ class OfflineWebView: WKWebView {
 			}
 		}
 	}
+
+	// MARK: - Keyboard zoom (Cmd+Plus / Cmd+Minus / Cmd+0)
+
+	private static let zoomStep = 1.1
+	private static let zoomRange = 0.5...3.0
+
+	override func keyDown(with event: NSEvent) {
+		guard event.modifierFlags.contains(.command) else {
+			super.keyDown(with: event)
+			return
+		}
+		switch event.charactersIgnoringModifiers {
+		case "+", "=":
+			pageZoom = min(pageZoom * Self.zoomStep, Self.zoomRange.upperBound)
+		case "-":
+			pageZoom = max(pageZoom / Self.zoomStep, Self.zoomRange.lowerBound)
+		case "0":
+			pageZoom = 1.0
+		default:
+			super.keyDown(with: event)
+		}
+	}
 }
