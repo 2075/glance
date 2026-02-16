@@ -112,9 +112,14 @@ class MainVC: NSViewController, QLPreviewingController {
 
 			// Add `PreviewVC` as a child view controller
 			addChild(previewVC)
-			previewVC.view.autoresizingMask = [.height, .width]
-			previewVC.view.frame = view.frame
+			previewVC.view.translatesAutoresizingMaskIntoConstraints = false
 			view.addSubview(previewVC.view)
+			NSLayoutConstraint.activate([
+				previewVC.view.topAnchor.constraint(equalTo: view.topAnchor),
+				previewVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+				previewVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+				previewVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			])
 
 			// Update stats
 			stats.increaseStatsCounts(fileExtension: file.url.pathExtension)
