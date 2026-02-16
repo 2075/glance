@@ -1,45 +1,29 @@
 name: Test
 
 on:
-  - push
-  - pull_request
+  push:
+    branches: [master]
+  pull_request:
 
 jobs:
   test-swift:
     name: Test (Swift)
-    runs-on: macos-latest
+    runs-on: macos-15
 
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app
 
       - name: Run tests
-        run: xcodebuild clean test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -project ./Glance.xcodeproj -scheme Glance
-
-  test-go:
-    name: Test (Go)
-    runs-on: macos-latest
-    defaults:
-      run:
-        working-directory: ./HTMLConverter/
-
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-
-      - name: Set up Go
-        uses: actions/setup-go@v1
-        with:
-          go-version: 1.14
-
-      - name: Restore Go Modules cache
-        id: go-mod-cache
-        uses: actions/cache@v1
-        with:
-          path: ~/go/pkg/mod/
-          key: ${{ runner.os }}-go-mod-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ runner.os }}-go-mod-
-
-      - name: Run tests
-        run: go test
+        run: |
+          xcodebuild clean test \
+            -project Glance.xcodeproj \
+            -scheme Glance \
+            -destination 'platform=macOS' \
+            CODE_SIGN_IDENTITY="-" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            -quiet

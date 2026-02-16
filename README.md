@@ -55,6 +55,14 @@ open Glance.xcodeproj
 
 Build and run the **Glance** scheme. The Quick Look extension is embedded automatically.
 
+## Zoom / Scale
+
+Web-based previews (Markdown, source code, Jupyter Notebooks) support zoom:
+
+- **Pinch to zoom** on a trackpad to scale the preview content
+- **Cmd + `+`** / **Cmd + `-`** to zoom in or out (0.5x -- 3.0x range)
+- **Cmd + `0`** to reset zoom to 100%
+
 ## FAQ
 
 **Why does Glance require network permissions?**
