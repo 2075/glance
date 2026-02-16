@@ -88,6 +88,12 @@ tag: ## Create and push a git tag for the current MARKETING_VERSION (triggers Gi
 	git push origin "v$(VERSION)"
 	@echo "Pushed tag v$(VERSION) — GitHub Actions will build and create the release"
 
+.PHONY: retag
+retag: ## Delete and re-push the current version tag to retrigger the release
+	git tag -fa "v$(VERSION)" -m "Release $(VERSION)"
+	git push origin "v$(VERSION)" --force
+	@echo "Re-tagged v$(VERSION) — GitHub Actions will rebuild the release"
+
 # ── Clean ────────────────────────────────────────────────────────────
 
 .PHONY: clean
