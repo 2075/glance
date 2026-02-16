@@ -51,6 +51,8 @@ class WebPreviewVC: NSViewController, PreviewVC {
 	private func setUpView() {
 		// Remove background to prevent white flicker on load in Dark Mode
 		webView.underPageBackgroundColor = .clear
+		webView.allowsMagnification = true
+		webView.magnification = 1.0
 	}
 
 	private func loadPreview() {
